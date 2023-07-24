@@ -13,9 +13,9 @@ import MyFavorites from './pages/MyFavorites/MyFavorites';
 
 
 function App() {
-  const apiKey = import.meta.env.VITE_API_KEY;
-  const baseUrl = import.meta.env.VITE_BASE_URL
-  const serverUrl=import.meta.env.VITE_SERVER_URL;
+  const apiKey = import.meta.env.API_KEY;
+  const baseUrl = import.meta.env.BASE_URL
+  const serverUrl=import.meta.env.SERVER_URL;
 
 
   return (
