@@ -1,43 +1,13 @@
-import './App.css';
-import Header from './components/Header/Header';
-import {BrowserRouter,Routes,Route} from 'react-router-dom';
-import CombinedContextProvider from './context/index'
-import HomePage from './pages/HomePage/HomePage'
-import MovieDetails from './pages/MovieDetails/MovieDetails';
-import SignIn from './pages/SignIn/SignIn';
-import SignUp from './pages/SignUp/SignUp';
-import MyFavorites from './pages/MyFavorites/MyFavorites';
-
-
-
-
+// import React from 'react'
+import './App.css'
+import HomeScreen from './components/Homescreen/HomeScreen';
 
 function App() {
-  const apiKey = import.meta.env.API_KEY;
-  const baseUrl = import.meta.env.BASE_URL
-  const serverUrl=import.meta.env.SERVER_URL;
-
-
   return (
-    
-      <BrowserRouter>
-      <CombinedContextProvider>
-      <Header apiKey={apiKey} baseUrl={baseUrl} />
-      <Routes>
-        <Route path="/" element={<HomePage apiKey={apiKey} baseUrl={baseUrl} />}/>
-        <Route path="/moviedetails/:movieid" element={<MovieDetails serverUrl={serverUrl} baseUrl={baseUrl} apiKey={apiKey}/>}/>
-        <Route path="/myfavorites" element={<MyFavorites serverUrl={serverUrl} baseUrl={baseUrl} apiKey={apiKey}/>}/>
-        <Route path="/signup" element={<SignUp serverUrl={serverUrl}/>}/>
-        <Route path="/signin" element={<SignIn serverUrl={serverUrl}/>}/>
-   
-       
-      
-      </Routes>
-      </CombinedContextProvider>
-      </BrowserRouter>
-       
-   
-  )
+    <div className="app">
+      <h1>Lets build a Netflix clone!</h1>
+      <HomeScreen />
+    </div>
+  );
 }
-
-export default App
+export default App;
