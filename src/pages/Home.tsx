@@ -1,7 +1,10 @@
+import React from "react";
+import Slider from "../components/Slider/Slider";
+
 export default function Home() :JSX.Element {
     return (
         <div>
-            {import.meta.env.VITE_API_BASE_URL}
+            <Slider />
         </div>
     )
 }
