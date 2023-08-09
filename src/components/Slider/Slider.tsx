@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 import { Movie } from "../movieTypes";
+import "./Slider.css";
 
 export default function Slider() {
   const [upcoming, setUpcoming] = useState<Movie[]>([]);
+  const [index, setIndex] = useState<number>(0);
 
   useEffect(() => {
     axios
@@ -19,6 +22,18 @@ export default function Slider() {
       .catch((err) => console.error(err));
   }, []);
 
+  const handleSlideClick = (direction: "left" | "right"): void => {
+    if (direction === "left") {
+      index === 0
+        ? setIndex(upcoming.length - 1)
+        : setIndex((prevState) => prevState - 1);
+    } else {
+      index === upcoming.length - 1
+        ? setIndex(0)
+        : setIndex((prevState) => prevState + 1);
+    }
+  };
+
   const sliderStyle = {
     backgroundImage: `url(${import.meta.env.VITE_API_BASE_IMG_URL}${
       upcoming[0]?.backdrop_path
@@ -31,20 +46,32 @@ export default function Slider() {
   };
 
   return (
-    <div style={sliderStyle}>
-      {upcoming.map((movie) => (
-        <div key={movie.id}>
-          <h2>{movie.title}</h2>
-          <p>{movie.overview}</p>
-          <p>Release Date: {movie.release_date}</p>
-          {/* {movie.poster_path && (
+    <>
+      <div style={sliderStyle}>
+        <div className="slider-overlay">
+          <MdKeyboardArrowLeft
+            className="left-arrow"
+            onClick={() => handleSlideClick("left")}
+          />
+          <MdKeyboardArrowRight
+            className="right-arrow"
+            onClick={() => handleSlideClick("right")}
+          />
+        </div>
+        {upcoming.map((movie) => (
+          <div key={movie.id}>
+            <h2>{movie.title}</h2>
+            <p>{movie.overview}</p>
+            <p>Release Date: {movie.release_date}</p>
+            {/* {movie.poster_path && (
             <img
               src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
               alt={`${movie.title} Poster`}
             />
           )} */}
-        </div>
-      ))}
-    </div>
+          </div>
+        ))}
+      </div>
+    </>
   );
 }
