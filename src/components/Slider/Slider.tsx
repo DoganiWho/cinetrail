@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { HTMLAttributes, useEffect, useState } from "react";
 import axios from "axios";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
-import StarRatings from "./react-star-ratings";
-import { Movie, Genre } from "../movieTypes";
+import StarRatings from "react-star-ratings";
+import { Movie } from "../movieTypes";
 import "./Slider.css";
 import { Genres } from "../Genres/Genres";
 
@@ -46,7 +46,7 @@ export default function Slider() {
     height: "60vh",
     width: "100%",
     position: "relative",
-  };
+  } as HTMLAttributes<StyleSheet>;
 
   return (
     <>
