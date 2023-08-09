@@ -66,7 +66,7 @@ export default function Slider() {
           <p className="slider-description">
             {upcoming[index]?.overview.slice(0, 150)}...
           </p>
-          <Genres genreIds={upcoming[index]?.id} />
+          <Genres genreIds={upcoming[index]?.genres.map(genre => genre.id)} />
           <p>Release Date: {upcoming[index]?.release_date}</p>
           {upcoming[index] && (
             <StarRatings

@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Genre } from "../movieTypes";
+import { Genre, GenresProps } from "../movieTypes";
 
-export function Genres({ genreIds }): JSX.Element {
+export function Genres({ genreIds }: GenresProps): JSX.Element {
   const [genres, setGenres] = useState<Genre[]>([]);
   useEffect(() => {
     axios
@@ -28,6 +28,7 @@ export function Genres({ genreIds }): JSX.Element {
               </p>
             );
         }
+        return null;
       })}
     </div>
   );
