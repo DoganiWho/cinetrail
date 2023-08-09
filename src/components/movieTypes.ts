@@ -7,3 +7,8 @@ export interface Movie {
     backdrop_path: string | null;
     // Add more fields as needed
 }
+
+export interface Genre {
+    id: number;
+    name: string;
+}
