@@ -1,10 +1,10 @@
 import { HTMLAttributes, useEffect, useState } from "react";
 import axios from "axios";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
-import StarRatings from "react-star-ratings";
 import { Movie } from "../movieTypes";
 import "./Slider.css";
 import { Genres } from "../Genres/Genres";
+import StarRatings from "react-star-ratings";
 
 export default function Slider() {
   const [upcoming, setUpcoming] = useState<Movie[]>([]);
