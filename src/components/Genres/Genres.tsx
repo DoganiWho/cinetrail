@@ -8,7 +8,7 @@ export function Genres({ genreIds }): JSX.Element {
     axios
       .get(
         `${import.meta.env.VITE_API_BASE_URL}list?api_key=${
-          import.meta.env.VITE_API_KEY
+          import.meta.env.VITE_APP_API_KEY
         }`
       )
       .then((res) => setGenres(res.data.genres))
